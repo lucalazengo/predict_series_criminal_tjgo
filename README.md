@@ -323,6 +323,6 @@ Typical results achieved:
 ## Team and Contact
 
 - **Author** – Eng. Manuel Lucala Zengo
-- **Mentorship** – UFG TI Residency Program
 - **Team** – DIACDE TJGO
 - **Methodology** – CRISP-DM adapted for time series
+- **Mentorship** – UFG TI Residency Program
