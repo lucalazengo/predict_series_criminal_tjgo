@@ -1,114 +1,114 @@
-# 🔮 Pipeline de Previsão de Séries Temporais - Casos Criminais TJGO
+# Time Series Forecasting Pipeline – TJGO Criminal Cases
 
-Pipeline automatizado e reprodutível para previsão de séries temporais mensais utilizando **Facebook Prophet**, desenvolvido especificamente para análise e previsão de casos criminais do Tribunal de Justiça de Goiás (TJGO).
+An automated and reproducible pipeline for monthly time series forecasting using **Facebook Prophet**, specifically developed for analyzing and forecasting criminal cases at the Court of Justice of Goiás (TJGO).
 
-## 📋 Sumário
+## Table of Contents
 
-- [Características](#-características)
-- [Estrutura do Projeto](#-estrutura-do-projeto)
-- [Pré-requisitos](#-pré-requisitos)
-- [Instalação Rápida](#-instalação-rápida)
-- [Guia de Execução](#-guia-de-execução)
-- [Configuração](#-configuração)
-- [Resultados e Saídas](#-resultados-e-saídas)
-- [Documentação](#-documentação)
-- [Tecnologias Utilizadas](#-tecnologias-utilizadas)
-- [Contribuindo](#-contribuindo)
-
----
-
-## ✨ Características
-
-### Funcionalidades Principais
-
-- ✅ **Modelo Prophet Completo**: Implementação com suporte completo a variáveis exógenas
-- ✅ **Validação Temporal**: Time Series Cross-Validation (TimeSeriesSplit) para evitar vazamento de dados
-- ✅ **Otimização Automática**: Busca de hiperparâmetros usando Optuna (50+ trials)
-- ✅ **Análise Detalhada de Features**: Importância relativa, correlações e contribuições
-- ✅ **Métricas Completas**: MAE, RMSE, MAPE, SMAPE, R²
-- ✅ **Visualizações**: Gráficos de previsão, componentes e análise de resíduos
-- ✅ **Relatórios Detalhados**: HTML interativo e relatório técnico completo em Markdown
-- ✅ **Gestão de Artefatos**: Salvamento automático de modelos, previsões e métricas
-- ✅ **Design Modular**: Estrutura organizada em módulos (`src/`)
-- ✅ **Documentação Completa**: Guias detalhados em português
-
-### Melhorias Recentes (Outubro 2025)
-
-- 🚀 Otimização robusta: 50 trials (aumentado de 5)
-- 🚀 Validação expandida: 5 splits de cross-validation
-- 🚀 Análise aprofundada de importância de variáveis exógenas
-- 🚀 Relatório técnico detalhado com análises aprofundadas
-- 🚀 Geração automática de relatórios após execução
+- [Features](#-features)
+- [Project Structure](#-project-structure)
+- [Prerequisites](#-prerequisites)
+- [Quick Installation](#-quick-installation)
+- [Execution Guide](#-execution-guide)
+- [Configuration](#-configuration)
+- [Results and Outputs](#-results-and-outputs)
+- [Documentation](#-documentation)
+- [Technologies Used](#-technologies-used)
+- [Contributing](#-contributing)
 
 ---
 
-## 📁 Estrutura do Projeto
+## Features
+
+### Core Capabilities
+
+- ✅ **Full Prophet Model**: Implementation with full support for exogenous variables
+- ✅ **Temporal Validation**: Time Series Cross-Validation (`TimeSeriesSplit`) to prevent data leakage
+- ✅ **Automatic Optimization**: Hyperparameter tuning using Optuna (50+ trials)
+- ✅ **Detailed Feature Analysis**: Relative importance, correlations, and contributions
+- ✅ **Comprehensive Metrics**: MAE, RMSE, MAPE, SMAPE, R²
+- ✅ **Visualizations**: Forecast plots, component decomposition, and residual analysis
+- ✅ **Detailed Reports**: Interactive HTML and complete technical report in Markdown
+- ✅ **Artifact Management**: Automatic saving of models, forecasts, and metrics
+- ✅ **Modular Design**: Organized code structure (`src/`)
+- ✅ **Complete Documentation**: Detailed guides in Portuguese
+
+### Recent Improvements (October 2025)
+
+- Robust optimization: 50 trials (increased from 5)
+- Expanded validation: 5 cross-validation splits
+- In-depth analysis of exogenous variable importance
+- Detailed technical report with advanced diagnostics
+- Automatic report generation after execution
+
+---
+
+## Project Structure
 
 ```
 predict_series_criminal_tjgo/
-├── src/                          # Código fonte modular
-│   ├── data/                    # Carregamento e pré-processamento de dados
+├── src/                          # Modular source code
+│   ├── data/                    # Data loading and preprocessing
 │   │   └── __init__.py          # DataManager, DataProcessor, DataValidator
-│   ├── models/                  # Wrapper do modelo Prophet
+│   ├── models/                  # Prophet model wrapper
 │   │   └── __init__.py          # ProphetModelWrapper, ProphetHyperparameterOptimizer
-│   ├── training/                 # Pipeline de treinamento
+│   ├── training/                # Training pipeline
 │   │   └── __init__.py          # TrainingPipeline, TimeSeriesSplitter
-│   ├── evaluation/              # Avaliação e métricas
+│   ├── evaluation/              # Evaluation and metrics
 │   │   └── __init__.py          # ModelEvaluator, FeatureImportanceAnalyzer, MetricsCalculator
-│   └── utils/                   # Utilidades e relatórios
+│   └── utils/                   # Utilities and reporting
 │       └── __init__.py          # ReportGenerator, Visualizer, ArtifactManager
 │
-├── configs/                      # Arquivos de configuração
-│   ├── default_config.yaml      # Configuração padrão
-│   └── criminal_cases_config.yaml  # Configuração específica para casos criminais
+├── configs/                      # Configuration files
+│   ├── default_config.yaml      # Default configuration
+│   └── criminal_cases_config.yaml  # Configuration for criminal cases
 │
-├── data/                         # Dados do projeto
-│   ├── raw_data/                # Dados brutos
+├── data/                         # Project data
+│   ├── raw_data/                # Raw data
 │   │   ├── casos_mensal__criminal_series_2015_2024.csv
 │   │   └── external_features_2015_2024.csv
-│   └── processed/               # Dados processados
+│   └── processed/               # Processed data
 │
-├── outputs/                      # Resultados gerados
-│   ├── models/                  # Modelos treinados (.joblib)
-│   ├── predictions/             # Previsões (.csv)
-│   └── reports/                 # Relatórios e visualizações
-│       ├── *.html               # Relatórios HTML
-│       ├── *.md                 # Relatórios Markdown
-│       ├── *.png                # Gráficos
-│       └── *.json               # Métricas e análises
+├── outputs/                      # Generated results
+│   ├── models/                  # Trained models (.joblib)
+│   ├── predictions/             # Forecasts (.csv)
+│   └── reports/                 # Reports and visualizations
+│       ├── *.html               # HTML reports
+│       ├── *.md                 # Markdown reports
+│       ├── *.png                # Plots
+│       └── *.json               # Metrics and analyses
 │
-├── logs/                        # Arquivos de log
+├── logs/                        # Log files
 │
-├── tests/                       # Testes unitários
+├── tests/                       # Unit tests
 │
-├── execute_pipeline.py          # Script principal de execução ⭐
-├── generate_detailed_report.py  # Gerador de relatório técnico detalhado
-├── main.py                      # Script alternativo de execução
+├── execute_pipeline.py          # Main execution script ⭐
+├── generate_detailed_report.py  # Detailed technical report generator
+├── main.py                      # Alternative execution script
 │
-├── requirements.txt             # Dependências Python
-├── setup.py                     # Configuração do pacote
+├── requirements.txt             # Python dependencies
+├── setup.py                     # Package setup
 │
-├── README.md                    # Este arquivo
-├── GUIA_EXECUCAO.md            # Guia detalhado de execução 📘
-├── DOCUMENTACAO_TECNICA.md     # Documentação técnica completa
-├── RELATORIO_EXECUCAO_FINAL.md # Relatório de execução
-└── RESUMO_IMPLEMENTACOES.md    # Resumo das implementações
+├── README.md                    # This file
+├── GUIA_EXECUCAO.md            # Detailed execution guide 📘
+├── DOCUMENTACAO_TECNICA.md     # Full technical documentation
+├── RELATORIO_EXECUCAO_FINAL.md # Execution report
+└── RESUMO_IMPLEMENTACOES.md    # Implementation summary
 ```
 
 ---
 
-## 🔧 Pré-requisitos
+## Prerequisites
 
-### Sistema
+### System Requirements
 
-- **Python**: 3.8 ou superior
-- **Sistema Operacional**: macOS, Linux ou Windows
-- **Memória RAM**: Mínimo 4GB (recomendado 8GB+)
-- **Espaço em Disco**: ~500MB
+- **Python**: 3.8 or higher
+- **Operating System**: macOS, Linux, or Windows
+- **RAM**: Minimum 4GB (8GB+ recommended)
+- **Disk Space**: ~500MB
 
-### Dependências Python
+### Python Dependencies
 
-Todas as dependências estão listadas em `requirements.txt`:
+All dependencies are listed in `requirements.txt`:
 
 ```txt
 pandas>=1.3.0
@@ -126,114 +126,118 @@ joblib>=1.0.0
 
 ---
 
-## 🚀 Instalação Rápida
+## Quick Installation
 
-### 1. Clonar/Baixar o Projeto
+### 1. Clone/Download the Project
 
 ```bash
-cd /caminho/para/projeto
+cd /path/to/project
 ```
 
-### 2. Criar Ambiente Virtual (Recomendado)
+### 2. Create a Virtual Environment (Recommended)
 
 ```bash
 python3 -m venv venv
 source venv/bin/activate  # macOS/Linux
-# ou venv\Scripts\activate  # Windows
+# or venv\Scripts\activate  # Windows
 ```
 
-### 3. Instalar Dependências
+### 3. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Verificar Instalação
+### 4. Verify Installation
 
 ```bash
-python3 -c "import pandas, numpy, prophet; print('✅ Dependências instaladas!')"
+python3 -c "import pandas, numpy, prophet; print(' Dependencies installed!')"
 ```
 
 ---
 
-## 📖 Guia de Execução
+## Execution Guide
 
-### Execução Básica (Recomendada)
+### Basic Execution (Recommended)
 
 ```bash
 python3 execute_pipeline.py
 ```
 
-Este comando executa o pipeline completo:
-1. ✅ Carrega e prepara os dados
-2. ✅ Valida a qualidade dos dados
-3. ✅ Treina o modelo Prophet com otimização de hiperparâmetros (50 trials)
-4. ✅ Gera previsões futuras
-5. ✅ Calcula todas as métricas de avaliação
-6. ✅ Analisa importância das variáveis exógenas
-7. ✅ Gera visualizações (gráficos)
-8. ✅ Salva todos os artefatos
-9. ✅ Gera relatório HTML
-10. ✅ Gera relatório técnico detalhado em Markdown
+This command runs the full pipeline:
 
-**⏱️ Tempo Estimado:** 30-60 minutos (com 50 trials)
+1. Loads and prepares data
+2. Validates data quality
+3. Trains Prophet model with hyperparameter optimization (50 trials)
+4. Generates future forecasts
+5. Computes all evaluation metrics
+6. Analyzes exogenous variable importance
+7. Generates visualizations (plots)
+8. Saves all artifacts
+9. Generates HTML report
+10. Generates detailed Markdown technical report
 
-### Execução Rápida (Para Testes)
+**Estimated Time:** 30–60 minutes (with 50 trials)
 
-1. Editar `configs/criminal_cases_config.yaml`:
+### Fast Execution (For Testing)
+
+1. Edit `configs/criminal_cases_config.yaml`:
+
 ```yaml
 training:
   hyperparameter_optimization:
-    n_trials: 5  # Reduzir para execução mais rápida
+    n_trials: 5  # Reduce for faster execution
 ```
 
-2. Executar:
+2. Run:
+
 ```bash
 python3 execute_pipeline.py
 ```
 
-**⏱️ Tempo Estimado:** 5-10 minutos
+**Estimated Time:** 5–10 minutes
 
-### Gerar Apenas Relatório Detalhado
+### Generate Only the Detailed Report
 
-Se você já executou o pipeline e quer gerar apenas o relatório detalhado:
+If you’ve already run the pipeline and only want to regenerate the detailed report:
 
 ```bash
 python3 generate_detailed_report.py
 ```
 
-### Documentação Detalhada
+### Full Documentation
 
-Para instruções completas e detalhadas, consulte:
-- **[GUIA_EXECUCAO.md](GUIA_EXECUCAO.md)** - Guia passo a passo completo
+For complete step-by-step instructions, see:
+
+- **[GUIA_EXECUCAO.md](GUIA_EXECUCAO.md)** – Comprehensive execution guide
 
 ---
 
-## ⚙️ Configuração
+## Configuration
 
-### Arquivo de Configuração Principal
+### Main Configuration File
 
 `configs/criminal_cases_config.yaml`
 
-### Parâmetros Principais
+### Key Parameters
 
 ```yaml
-# Otimização de Hiperparâmetros
+# Hyperparameter Optimization
 training:
   hyperparameter_optimization:
     enabled: true
-    n_trials: 50              # Número de tentativas (aumentar = mais robustez, mais tempo)
-    
-# Validação Cruzada
+    n_trials: 50              # Number of trials (higher = more robust, slower)
+
+# Cross-Validation
 training:
   cv:
-    n_splits: 5               # Número de folds para TimeSeriesSplit
-    
-# Horizonte de Previsão
+    n_splits: 5               # Number of TimeSeriesSplit folds
+
+# Forecast Horizon
 forecasting:
-  horizon_months: 12          # Meses futuros para prever
-  
-# Métricas de Avaliação
+  horizon_months: 12          # Number of future months to forecast
+
+# Evaluation Metrics
 evaluation:
   metrics:
     - "mae"                   # Mean Absolute Error
@@ -243,9 +247,9 @@ evaluation:
     - "r2"                    # R-squared
 ```
 
-### Variáveis Exógenas
+### Exogenous Variables
 
-O modelo utiliza as seguintes variáveis exógenas (configuradas em `criminal_cases_config.yaml`):
+The model uses the following exogenous variables (configured in `criminal_cases_config.yaml`):
 
 - `atendimento_pre_hospitalar`
 - `pessoa_localizada`
@@ -256,241 +260,69 @@ O modelo utiliza as seguintes variáveis exógenas (configuradas em `criminal_ca
 
 ---
 
-## 📊 Resultados e Saídas
+## Results and Outputs
 
-### Estrutura de Saída
+### Output Structure
 
 ```
 outputs/
 ├── models/
-│   └── prophet_model_YYYYMMDD_HHMMSS.joblib      # Modelo treinado
+│   └── prophet_model_YYYYMMDD_HHMMSS.joblib      # Trained model
 │
 ├── predictions/
-│   └── forecast_YYYYMMDD_HHMMSS.csv              # Previsões futuras
+│   └── forecast_YYYYMMDD_HHMMSS.csv              # Future forecasts
 │
 └── reports/
-    ├── forecast_plot_YYYYMMDD_HHMMSS.png          # Gráfico de previsão
-    ├── components_plot_YYYYMMDD_HHMMSS.png       # Decomposição da série
-    ├── residuals_plot_YYYYMMDD_HHMMSS.png         # Análise de resíduos
-    ├── metrics_YYYYMMDD_HHMMSS.json                # Métricas calculadas
-    ├── feature_analysis_YYYYMMDD_HHMMSS.json      # Análise de features
-    ├── config_YYYYMMDD_HHMMSS.yaml                # Configuração usada
-    ├── report_YYYYMMDD_HHMMSS.html                # Relatório HTML
-    └── RELATORIO_DETALHADO_COMPLETO_*.md          # Relatório técnico detalhado
+    ├── forecast_plot_YYYYMMDD_HHMMSS.png          # Forecast plot
+    ├── components_plot_YYYYMMDD_HHMMSS.png       # Time series decomposition
+    ├── residuals_plot_YYYYMMDD_HHMMSS.png         # Residual analysis
+    ├── metrics_YYYYMMDD_HHMMSS.json                # Computed metrics
+    ├── feature_analysis_YYYYMMDD_HHMMSS.json      # Feature importance analysis
+    ├── config_YYYYMMDD_HHMMSS.yaml                # Configuration used
+    ├── report_YYYYMMDD_HHMMSS.html                # Interactive HTML report
+    └── RELATORIO_DETALHADO_COMPLETO_*.md          # Full technical report
 ```
 
-### Métricas de Performance
+### Performance Metrics
 
-Os resultados típicos obtidos:
+Typical results achieved:
 
-| Métrica | Valor | Classificação |
-|---------|-------|---------------|
-| **MAE** | ~648 casos | Excelente |
-| **RMSE** | ~831 casos | Excelente |
-| **MAPE** | ~8.08% | Excelente (< 10%) |
-| **SMAPE** | ~8.62% | Excelente |
-| **R²** | ~0.9695 | Excelente (> 0.90) |
+| Metric          | Value      | Rating            |
+| --------------- | ---------- | ----------------- |
+| **MAE**   | ~648 cases | Excellent         |
+| **RMSE**  | ~831 cases | Excellent         |
+| **MAPE**  | ~8.08%     | Excellent (<10%)  |
+| **SMAPE** | ~8.62%     | Excellent         |
+| **R²**   | ~0.9695    | Excellent (>0.90) |
 
-**Interpretação:**
-- **R² = 0.9695**: O modelo explica **96.95%** da variância dos dados
-- **MAPE = 8.08%**: Erro percentual muito baixo (< 10% é excelente)
-- **MAE = 647.95**: Erro absoluto médio de aproximadamente 648 casos/mês
+**Interpretation:**
 
-### Visualizações Geradas
+- **R² = 0.9695**: The model explains **96.95%** of the data variance
+- **MAPE = 8.08%**: Very low percentage error (<10% is excellent)
+- **MAE = 647.95**: Average absolute error of approximately 648 cases/month
 
-1. **Gráfico de Previsão**: Série temporal real vs prevista com intervalos de confiança
-2. **Gráfico de Componentes**: Decomposição em tendência, sazonalidade e efeitos exógenos
-3. **Gráfico de Resíduos**: Análise dos erros de previsão
+### Generated Visualizations
 
-### Relatórios
+1. **Forecast Plot**: Actual vs. predicted time series with confidence intervals
+2. **Component Plot**: Decomposition into trend, seasonality, and exogenous effects
+3. **Residual Plot**: Forecast error analysis
 
-1. **Relatório HTML**: Relatório interativo com todas as métricas e visualizações incorporadas
-2. **Relatório Markdown Detalhado**: Relatório técnico completo com:
-   - Análise estatística dos dados
-   - Análise detalhada de cada métrica
-   - Análise dos componentes do modelo
-   - Diagnóstico completo do modelo
-   - Análise de importância de features
-   - Conclusões e recomendações
+### Reports
 
----
-
-## 📚 Documentação
-
-### Documentos Disponíveis
-
-1. **[GUIA_EXECUCAO.md](GUIA_EXECUCAO.md)** ⭐
-   - Guia passo a passo de instalação e execução
-   - Troubleshooting completo
-   - Exemplos de uso
-   - Checklist de execução
-
-2. **[DOCUMENTACAO_TECNICA.md](DOCUMENTACAO_TECNICA.md)**
-   - Documentação técnica detalhada
-   - Arquitetura do sistema
-   - Descrição de módulos
-   - API e interfaces
-
-3. **[RELATORIO_EXECUCAO_FINAL.md](RELATORIO_EXECUCAO_FINAL.md)**
-   - Relatório de execução do pipeline
-   - Resultados obtidos
-   - Análise dos resultados
-
-4. **[RESUMO_IMPLEMENTACOES.md](RESUMO_IMPLEMENTACOES.md)**
-   - Resumo de todas as implementações
-   - Status das funcionalidades
-   - Melhorias realizadas
-
-### Comentários no Código
-
-Todo o código está documentado em português com:
-- Docstrings detalhadas
-- Comentários explicativos
-- Type hints
-- Exemplos de uso
+1. **HTML Report**: Interactive report with embedded metrics and visualizations
+2. **Detailed Markdown Report**: Comprehensive technical document including:
+   - Statistical data analysis
+   - In-depth metric interpretation
+   - Model component diagnostics
+   - Full model validation
+   - Feature importance analysis
+   - Conclusions and recommendations
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## Team and Contact
 
-### Bibliotecas Principais
-
-- **Prophet**: Modelo de previsão de séries temporais do Facebook
-- **Optuna**: Framework de otimização de hiperparâmetros
-- **Scikit-learn**: Machine learning e validação cruzada
-- **Pandas**: Manipulação e análise de dados
-- **NumPy**: Computação numérica
-- **Matplotlib/Seaborn/Plotly**: Visualizações
-
-### Estrutura e Padrões
-
-- **Design Modular**: Separação clara de responsabilidades
-- **Type Hints**: Anotação de tipos para melhor manutenibilidade
-- **Loguru**: Sistema de logging robusto
-- **YAML**: Configurações em formato legível
-- **Joblib**: Serialização de modelos
-
----
-
-## 🧪 Testes
-
-```bash
-# Executar todos os testes
-python -m pytest tests/
-
-# Executar testes com cobertura
-python -m pytest tests/ --cov=src
-```
-
----
-
-## 🔍 Troubleshooting
-
-### Problemas Comuns
-
-1. **Erro de Importação**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-2. **Arquivos de Dados Não Encontrados**
-   - Verificar se os arquivos existem em `data/raw_data/`
-   - Verificar nomes dos arquivos na configuração
-
-3. **Execução Muito Lenta**
-   - Reduzir `n_trials` na configuração
-   - Verificar recursos do sistema (RAM, CPU)
-
-### Mais Informações
-
-Consulte a seção **Troubleshooting** em [GUIA_EXECUCAO.md](GUIA_EXECUCAO.md) para soluções detalhadas.
-
----
-
-## 📈 Performance Esperada
-
-### Resultados Típicos
-
-Com a configuração padrão (50 trials, 5 splits):
-
-- **R²**: > 0.90 (Excelente)
-- **MAPE**: < 10% (Excelente)
-- **Tempo de Execução**: 30-60 minutos
-- **Arquivos Gerados**: ~10 arquivos (modelo, previsões, relatórios, visualizações)
-
-### Benchmark
-
-| Configuração | Trials | Tempo | R² Esperado |
-|--------------|--------|-------|-------------|
-| Rápida | 5 | ~10 min | > 0.85 |
-| Padrão | 50 | ~45 min | > 0.90 |
-| Extensa | 100+ | ~2h | > 0.92 |
-
----
-
-## 🤝 Contribuindo
-
-### Estrutura de Desenvolvimento
-
-1. Criar branch para nova feature
-2. Desenvolver e testar
-3. Documentar alterações
-4. Submeter pull request
-
-### Padrões de Código
-
-- Seguir estrutura modular em `src/`
-- Manter documentação atualizada
-- Adicionar testes para novas funcionalidades
-- Usar type hints
-
----
-
-## 📝 Licença
-
-Este projeto foi desenvolvido para análise de casos criminais do TJGO.
-
----
-
-## 👥 Autores
-
-Desenvolvido como parte do projeto de Residência em TI - TJGO.
-
----
-
-## 📞 Suporte
-
-Para dúvidas ou problemas:
-
-1. Consultar [GUIA_EXECUCAO.md](GUIA_EXECUCAO.md)
-2. Verificar logs em `logs/prophet_pipeline.log`
-3. Revisar documentação técnica
-
----
-
-## 🎯 Próximos Passos
-
-Após executar o pipeline:
-
-1. ✅ Analisar relatório HTML gerado
-2. ✅ Revisar relatório técnico detalhado
-3. ✅ Examinar visualizações
-4. ✅ Ajustar configuração se necessário
-5. ✅ Retreinar com novos dados periodicamente
-
----
-
-## 🌟 Destaques
-
-- 🏆 **Performance Excelente**: R² > 0.96, MAPE < 10%
-- 🎯 **Análise Detalhada**: Relatórios técnicos completos e aprofundados
-- 🔬 **Otimização Robusta**: 50+ trials para encontrar melhores hiperparâmetros
-- 📊 **Visualizações Completas**: Gráficos interativos e informativos
-- 📚 **Documentação Completa**: Guias detalhados em português
-- 🔄 **Reprodutível**: Configuração versionada e artefatos salvos
-
----
-
-**Última atualização:** Outubro 2025
-
-**Versão:** 2.0.0
+- **Author** – Eng. Manuel Lucala Zengo
+- **Mentorship** – UFG TI Residency Program
+- **Team** – DIACDE TJGO
+- **Methodology** – CRISP-DM adapted for time series

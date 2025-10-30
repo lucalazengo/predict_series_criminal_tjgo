@@ -1,6 +1,6 @@
 # RELATÓRIO TÉCNICO  - PREVISÃO DE SÉRIES TEMPORAIS  - Area Criminal
 
-## RESUMO EXECUTIVO
+## RESUMO 
 
 Este relatório apresenta a implementação completa de dois modelos de previsão de séries temporais para casos criminais do Tribunal de Justiça de Goiás (TJGO): **Facebook Prophet** e **SARIMAX**. Ambos os modelos foram desenvolvidos seguindo metodologias rigorosas de ciência de dados, com foco na previsão de casos criminais mensais para o período de 2015-2024, utilizando variáveis exógenas extraídas do Sistema Nacional de Estatísticas de Segurança Pública (SINESP).
 
@@ -984,22 +984,22 @@ class ProphetForecastingPipeline:
     def run_pipeline(self):
         # 1. Carregar e preparar dados
         prophet_df, exog = self.data_manager.load_and_prepare_data()
-      
+    
         # 2. Treinar modelo
         training_results = self.training_pipeline.run_training_pipeline(prophet_df, exog)
-      
+    
         # 3. Fazer previsões
         forecast = model_wrapper.predict(prophet_df, horizon_months)
-      
+    
         # 4. Avaliar modelo
         evaluation_results = self.evaluator.evaluate_model(model_wrapper, forecast, prophet_df)
-      
+    
         # 5. Gerar visualizações
         plots = self._generate_plots(forecast, prophet_df, evaluation_results)
-      
+    
         # 6. Salvar artefatos
         artifacts = self._save_artifacts(model_wrapper, forecast, evaluation_results)
-      
+    
         # 7. Gerar relatório
         report_path = self.report_generator.generate_report(training_results, evaluation_results)
 ```
@@ -1011,19 +1011,19 @@ class SARIMAXPipeline:
     def run_full_pipeline(self):
         # Fase 2: Data Understanding
         self.run_data_exploration()
-      
+    
         # Fase 3: Data Preparation  
         y, exog, dates = self.run_data_preparation()
-      
+    
         # Fase 4: Modeling
         self.train_model(y, exog)
-      
+    
         # Fase 5: Evaluation
         self.evaluate_model(y, exog)
-      
+    
         # Gera previsões
         forecast_df = self.generate_forecast(y, exog)
-      
+    
         # Salva artefatos
         artifacts = self.save_artifacts()
 ```
