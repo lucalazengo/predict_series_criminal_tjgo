@@ -1,0 +1,146 @@
+# Default Configuration for Prophet Forecasting Pipeline
+
+# Data Configuration
+data:
+  # Paths to data files
+  target_series_path: "data/raw_data/casos_mensal__criminal_series_2015_2024.csv"
+  exogenous_features_path: "data/raw_data/external_features_2015_2024.csv"
+  
+  # Column mappings
+  target_column: "TOTAL_CASOS"
+  date_column: "DATA"
+  
+  # Data preprocessing
+  preprocessing:
+    remove_outliers: true
+    outlier_method: "iqr"  # iqr, zscore, isolation_forest
+    outlier_threshold: 3.0
+    fill_missing: true
+    fill_method: "forward_fill"  # forward_fill, backward_fill, interpolate, mean
+
+# Model Configuration
+model:
+  # Prophet parameters
+  prophet_params:
+    growth: "linear"  # linear, logistic
+    changepoint_prior_scale: 0.05
+    seasonality_prior_scale: 10.0
+    holidays_prior_scale: 10.0
+    seasonality_mode: "additive"  # additive, multiplicative
+    daily_seasonality: false
+    weekly_seasonality: true
+    yearly_seasonality: true
+    
+  # Exogenous variables
+  exogenous_vars:
+    enabled: true
+    features: [
+      "atendimento_pre_hospitalar",
+      "atendimento_pre_hospitalar_lag_1", 
+      "atendimento_pre_hospitalar_lag_2",
+      "atendimento_pre_hospitalar_lag_3",
+      "pessoa_localizada_lag_3",
+      "lesao_corporal_seguida_de_morte",
+      "tentativa_de_feminicidio_lag_2",
+      "morte_de_agente_do_estado_lag_1",
+      "lesao_corporal_seguida_de_morte_lag_2",
+      "suicidio_de_agente_do_estado"
+    ]
+    
+  # Holidays configuration
+  holidays:
+    enabled: true
+    country: "BR"  # Brazil holidays
+    custom_holidays: []
+
+# Training Configuration
+training:
+  # Cross-validation settings
+  cv:
+    n_splits: 5
+    test_size: 0.2
+    gap: 0  # Gap between train and test sets
+    
+  # Hyperparameter optimization
+  hyperparameter_optimization:
+    enabled: true
+    n_trials: 50
+    timeout: 3600  # seconds
+    
+    # Parameters to optimize
+    optimize_params:
+      changepoint_prior_scale: [0.001, 0.5]
+      seasonality_prior_scale: [0.01, 10.0]
+      holidays_prior_scale: [0.01, 10.0]
+      
+  # Training period
+  train_start: "2015-01-01"
+  train_end: "2023-12-01"
+  
+  # Validation period
+  val_start: "2024-01-01"
+  val_end: "2024-12-01"
+
+# Forecasting Configuration
+forecasting:
+  # Forecast horizon
+  horizon_months: 12
+  
+  # Prediction intervals
+  prediction_intervals:
+    enabled: true
+    intervals: [0.8, 0.95]
+    
+  # Uncertainty samples
+  uncertainty_samples: 1000
+
+# Evaluation Configuration
+evaluation:
+  # Metrics to calculate
+  metrics:
+    - "mae"      # Mean Absolute Error
+    - "mse"      # Mean Squared Error
+    - "rmse"     # Root Mean Squared Error
+    - "mape"     # Mean Absolute Percentage Error
+    - "smape"    # Symmetric Mean Absolute Percentage Error
+    - "r2"       # R-squared
+    
+  # Component analysis
+  component_analysis:
+    enabled: true
+    components: ["trend", "seasonal", "holidays", "exogenous"]
+
+# Output Configuration
+output:
+  # Base output directory
+  base_dir: "outputs"
+  
+  # Save options
+  save_model: true
+  save_predictions: true
+  save_metrics: true
+  save_plots: true
+  
+  # Plot configuration
+  plots:
+    forecast_plot: true
+    components_plot: true
+    cross_validation_plot: true
+    residuals_plot: true
+    
+  # Report generation
+  reports:
+    enabled: true
+    format: "html"  # html, pdf, markdown
+    include_metrics: true
+    include_plots: true
+    include_components: true
+
+# Logging Configuration
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  file: "logs/prophet_pipeline.log"
+  format: "{time:YYYY-MM-DD HH:mm:ss} | {level} | {name}:{function}:{line} | {message}"
+  
+# Random seed for reproducibility
+random_seed: 42

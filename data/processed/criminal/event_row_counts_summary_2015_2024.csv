@@ -1,0 +1,31 @@
+evento,row_count,slug
+Feminicídio,23712,feminicidio
+Homicídio doloso,18772,homicidio_doloso
+Morte no trânsito ou em decorrência dele (exceto homicídio doloso),17784,morte_no_transito_ou_em_decorrencia_dele_exceto_homicidio_doloso
+Mortes a esclarecer (sem indício de crime),17784,mortes_a_esclarecer_sem_indicio_de_crime
+Tentativa de homicídio,17784,tentativa_de_homicidio
+Tentativa de feminicídio,17784,tentativa_de_feminicidio
+Suicídio,17784,suicidio
+Roubo seguido de morte (latrocínio),17784,roubo_seguido_de_morte_latrocinio
+Lesão corporal seguida de morte,17784,lesao_corporal_seguida_de_morte
+Mandado de prisão cumprido,17784,mandado_de_prisao_cumprido
+Arma de Fogo Apreendida,864,arma_de_fogo_apreendida
+Suicídio de Agente do Estado,648,suicidio_de_agente_do_estado
+Morte de Agente do Estado,648,morte_de_agente_do_estado
+Pessoa Localizada,216,pessoa_localizada
+Pessoa Desaparecida,216,pessoa_desaparecida
+Apreensão de Cocaína,96,apreensao_de_cocaina
+Apreensão de Maconha,96,apreensao_de_maconha
+Furto de veículo,96,furto_de_veiculo
+Estupro de vulnerável,96,estupro_de_vulneravel
+Estupro,96,estupro
+Emissão de Alvarás de licença,96,emissao_de_alvaras_de_licenca
+Combate a incêndios,96,combate_a_incendios
+Busca e salvamento,96,busca_e_salvamento
+Atendimento pré-hospitalar,96,atendimento_pre_hospitalar
+Morte por intervenção de Agente do Estado,72,morte_por_intervencao_de_agente_do_estado
+Realização de vistorias,72,realizacao_de_vistorias
+Roubo a instituição financeira,72,roubo_a_instituicao_financeira
+Roubo de carga,72,roubo_de_carga
+Roubo de veículo,72,roubo_de_veiculo
+Tráfico de drogas,72,trafico_de_drogas

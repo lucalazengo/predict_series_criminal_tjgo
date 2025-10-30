@@ -1,0 +1,109 @@
+data:
+  date_column: DATA
+  exogenous_features_path: data/raw_data/external_features_2015_2024.csv
+  preprocessing:
+    auto_difference: true
+    ensure_stationarity: true
+    fill_method: forward_fill
+    fill_missing: true
+    outlier_method: iqr
+    outlier_threshold: 3.0
+    remove_outliers: false
+  target_column: TOTAL_CASOS
+  target_series_path: data/raw_data/casos_mensal__criminal_series_2015_2024.csv
+evaluation:
+  diagnostic_plots:
+    enabled: true
+    plots:
+    - residuals
+    - acf_residuals
+    - qq_plot
+    - forecast
+  metrics:
+  - mae
+  - mse
+  - rmse
+  - mape
+  - smape
+  - r2
+  - aic
+  - bic
+  residual_analysis:
+    enabled: true
+    tests:
+    - ljung_box
+    - normality
+    - heteroskedasticity
+forecasting:
+  horizon_months: 12
+  prediction_intervals:
+    alpha: 0.05
+    enabled: true
+logging:
+  file: logs/sarimax_pipeline.log
+  format: '{time:YYYY-MM-DD HH:mm:ss} | {level} | {name}:{function}:{line} | {message}'
+  level: INFO
+model:
+  auto_arima:
+    approximation: false
+    error_action: ignore
+    information_criterion: aicc
+    m: 12
+    max_D: 1
+    max_P: 2
+    max_Q: 2
+    max_d: 2
+    max_order: 10
+    max_p: 5
+    max_q: 5
+    method: lbfgs
+    n_jobs: 1
+    seasonal: true
+    seasonal_periods: 12
+    stepwise: true
+    suppress_warnings: true
+    test: adf
+    test_kwargs: null
+    trace: true
+    with_intercept: auto
+  exogenous_vars:
+    create_lags: true
+    enabled: true
+    features:
+    - atendimento_pre_hospitalar
+    - pessoa_localizada
+    - lesao_corporal_seguida_de_morte
+    - tentativa_de_feminicidio
+    - morte_de_agente_do_estado
+    - suicidio_de_agente_do_estado
+    max_lags: 3
+output:
+  base_dir: outputs/sarimax
+  plots:
+    acf_residual_plot: true
+    decomposition_plot: true
+    forecast_plot: true
+    qq_plot: true
+    residual_plot: true
+  reports:
+    enabled: true
+    format: markdown
+    include_data_exploration: true
+    include_diagnostics: true
+    include_metrics: true
+    include_plots: true
+  save_exploration: true
+  save_metrics: true
+  save_model: true
+  save_plots: true
+  save_predictions: true
+random_seed: 42
+training:
+  cv:
+    gap: 0
+    n_splits: 5
+    test_size: 0.2
+  train_end: '2023-12-01'
+  train_start: '2015-01-01'
+  val_end: '2024-12-01'
+  val_start: '2024-01-01'

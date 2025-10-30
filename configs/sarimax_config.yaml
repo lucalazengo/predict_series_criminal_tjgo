@@ -1,0 +1,179 @@
+# Configuration for SARIMAX Forecasting Pipeline
+# Based on CRISP-DM methodology and data-driven decisions
+
+# Data Configuration
+data:
+  # Paths to data files
+  target_series_path: "data/raw_data/casos_mensal__criminal_series_2015_2024.csv"
+  exogenous_features_path: "data/raw_data/external_features_2015_2024.csv"
+  
+  # Column mappings
+  target_column: "TOTAL_CASOS"
+  date_column: "DATA"
+  
+  # Data preprocessing
+  preprocessing:
+    remove_outliers: false  # Para SARIMAX, manter outliers pode ser importante para detecção
+    outlier_method: "iqr"
+    outlier_threshold: 3.0
+    fill_missing: true
+    fill_method: "forward_fill"  # forward_fill, backward_fill, interpolate, mean
+    # SARIMAX specific
+    ensure_stationarity: true  # Realiza testes de estacionariedade
+    auto_difference: true  # auto_arima decide diferenciação
+
+# Model Configuration - SARIMAX
+model:
+  # Auto ARIMA configuration (pmdarima)
+  auto_arima:
+    # Seasonal ARIMA orders - serão determinados automaticamente
+    # p, d, q: ordens AR, diferenciação, MA
+    # P, D, Q: ordens sazonais AR, diferenciação, MA
+    # s: período sazonal (12 para dados mensais)
+    
+    # Configurações de busca automática
+    max_p: 5  # Máximo ordem AR
+    max_d: 2  # Máximo diferenciações
+    max_q: 5  # Máximo ordem MA
+    max_P: 2  # Máximo ordem AR sazonal
+    max_D: 1  # Máximo diferenciações sazonais
+    max_Q: 2  # Máximo ordem MA sazonal
+    
+    # Sazonalidade
+    seasonal: true  # Habilitar componente sazonal
+    seasonal_periods: 12  # Mensal (12 meses)
+    m: 12  # Alias para seasonal_periods
+    
+    # Critério de informação
+    information_criterion: "aicc"  # aic, aicc, bic, hqic
+    # AICc é mais apropriado para amostras pequenas
+    
+    # Outras configurações
+    stepwise: true  # Usa busca stepwise (mais rápido)
+    trace: true  # Mostra progresso da busca
+    suppress_warnings: true
+    error_action: "ignore"  # ignore, warn, raise
+    approximation: false  # False para modelos exatos
+    
+    # Timeout para busca (segundos)
+    max_order: 10  # Limite da soma p+q+P+Q
+    n_jobs: 1  # Paralelização (cuidado com auto_arima)
+    
+    # Teste de estacionariedade
+    test: "adf"  # adf, kpss, pp
+    test_kwargs: null
+    
+    # Outras opções avançadas
+    with_intercept: "auto"  # auto, true, false
+    method: "lbfgs"  # lbfgs, nm, cg
+
+  # Exogenous variables (using selected features from feature selection analysis)
+  exogenous_vars:
+    enabled: true
+    # Features selecionadas baseadas em análise exploratória
+    features: [
+      "atendimento_pre_hospitalar",
+      "pessoa_localizada",
+      "lesao_corporal_seguida_de_morte",
+      "tentativa_de_feminicidio",
+      "morte_de_agente_do_estado",
+      "suicidio_de_agente_do_estado"
+    ]
+    # Configurações de lag features
+    create_lags: true
+    max_lags: 3  # Criar lags até 3 períodos
+
+# Training Configuration
+training:
+  # Cross-validation settings
+  cv:
+    n_splits: 5
+    test_size: 0.2
+    gap: 0  # Gap between train and test sets
+    
+  # Training period
+  train_start: "2015-01-01"
+  train_end: "2023-12-01"
+  
+  # Validation period
+  val_start: "2024-01-01"
+  val_end: "2024-12-01"
+
+# Forecasting Configuration
+forecasting:
+  # Forecast horizon
+  horizon_months: 12
+  
+  # Prediction intervals
+  prediction_intervals:
+    enabled: true
+    alpha: 0.05  # 95% confidence interval
+
+# Evaluation Configuration
+evaluation:
+  # Metrics to calculate
+  metrics:
+    - "mae"      # Mean Absolute Error
+    - "mse"      # Mean Squared Error
+    - "rmse"     # Root Mean Squared Error
+    - "mape"     # Mean Absolute Percentage Error
+    - "smape"    # Symmetric Mean Absolute Percentage Error
+    - "r2"       # R-squared
+    - "aic"      # Akaike Information Criterion
+    - "bic"      # Bayesian Information Criterion
+    
+  # Residual analysis
+  residual_analysis:
+    enabled: true
+    tests:
+      - "ljung_box"  # Teste de autocorrelação dos resíduos
+      - "normality"  # Teste de normalidade (Shapiro-Wilk, Jarque-Bera)
+      - "heteroskedasticity"  # Teste de heterocedasticidade
+    
+  # Diagnostic plots
+  diagnostic_plots:
+    enabled: true
+    plots:
+      - "residuals"  # Gráfico de resíduos
+      - "acf_residuals"  # ACF dos resíduos
+      - "qq_plot"  # Q-Q plot para normalidade
+      - "forecast"  # Gráfico de previsão vs real
+
+# Output Configuration
+output:
+  # Base output directory
+  base_dir: "outputs/sarimax"
+  
+  # Save options
+  save_model: true
+  save_predictions: true
+  save_metrics: true
+  save_plots: true
+  save_exploration: true  # Salvar análise exploratória
+  
+  # Plot configuration
+  plots:
+    forecast_plot: true
+    residual_plot: true
+    acf_residual_plot: true
+    qq_plot: true
+    decomposition_plot: true
+    
+  # Report generation
+  reports:
+    enabled: true
+    format: "markdown"  # html, markdown
+    include_metrics: true
+    include_plots: true
+    include_diagnostics: true
+    include_data_exploration: true
+
+# Logging Configuration
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  file: "logs/sarimax_pipeline.log"
+  format: "{time:YYYY-MM-DD HH:mm:ss} | {level} | {name}:{function}:{line} | {message}"
+  
+# Random seed for reproducibility
+random_seed: 42
+

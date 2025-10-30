@@ -1,0 +1,102 @@
+data:
+  date_column: DATA
+  exogenous_features_path: data/raw_data/external_features_2015_2024.csv
+  preprocessing:
+    fill_method: forward_fill
+    fill_missing: true
+    outlier_method: iqr
+    outlier_threshold: 3.0
+    remove_outliers: true
+  target_column: TOTAL_CASOS
+  target_series_path: data/raw_data/casos_mensal__criminal_series_2015_2024.csv
+evaluation:
+  component_analysis:
+    components:
+    - trend
+    - seasonal
+    - holidays
+    - exogenous
+    enabled: true
+  metrics:
+  - mae
+  - mse
+  - rmse
+  - mape
+  - smape
+  - r2
+forecasting:
+  horizon_months: 6
+  prediction_intervals:
+    enabled: true
+    intervals:
+    - 0.8
+    - 0.95
+  uncertainty_samples: 1000
+logging:
+  file: logs/prophet_pipeline.log
+  format: '{time:YYYY-MM-DD HH:mm:ss} | {level} | {name}:{function}:{line} | {message}'
+  level: INFO
+model:
+  exogenous_vars:
+    enabled: true
+    features:
+    - atendimento_pre_hospitalar
+    - pessoa_localizada
+    - lesao_corporal_seguida_de_morte
+    - tentativa_de_feminicidio
+    - morte_de_agente_do_estado
+    - suicidio_de_agente_do_estado
+  holidays:
+    country: BR
+    custom_holidays: []
+    enabled: true
+  prophet_params:
+    changepoint_prior_scale: 0.1956734497800176
+    daily_seasonality: false
+    growth: linear
+    holidays_prior_scale: 0.02439258764053775
+    seasonality_mode: additive
+    seasonality_prior_scale: 0.12746250207152962
+    weekly_seasonality: true
+    yearly_seasonality: true
+output:
+  base_dir: outputs
+  plots:
+    components_plot: true
+    cross_validation_plot: true
+    forecast_plot: true
+    residuals_plot: true
+  reports:
+    enabled: true
+    format: html
+    include_components: true
+    include_metrics: true
+    include_plots: true
+  save_metrics: true
+  save_model: true
+  save_plots: true
+  save_predictions: true
+random_seed: 42
+training:
+  cv:
+    gap: 0
+    n_splits: 3
+    test_size: 0.2
+  hyperparameter_optimization:
+    enabled: true
+    n_trials: 5
+    optimize_params:
+      changepoint_prior_scale:
+      - 0.001
+      - 0.5
+      holidays_prior_scale:
+      - 0.01
+      - 10.0
+      seasonality_prior_scale:
+      - 0.01
+      - 10.0
+    timeout: 300
+  train_end: '2023-12-01'
+  train_start: '2015-01-01'
+  val_end: '2024-12-01'
+  val_start: '2024-01-01'

@@ -1,0 +1,149 @@
+2025-10-29 11:27:07 | INFO | sarimax.pipeline:_setup_logging:98 | Logging configured
+2025-10-29 11:27:07 | INFO | sarimax.pipeline:run_data_exploration:105 | ======================================================================
+2025-10-29 11:27:07 | INFO | sarimax.pipeline:run_data_exploration:106 | CRISP-DM FASE 2: DATA UNDERSTANDING
+2025-10-29 11:27:07 | INFO | sarimax.pipeline:run_data_exploration:107 | ======================================================================
+2025-10-29 11:27:07 | ERROR | __main__:main:96 | Pipeline execution failed: Invalid format specifier '.4f if st['kpss']['pvalue'] else 'N/A'' for object of type 'float'
+2025-10-29 11:27:22 | INFO | sarimax.pipeline:_setup_logging:98 | Logging configured
+2025-10-29 11:27:22 | INFO | sarimax.pipeline:run_full_pipeline:306 | ======================================================================
+2025-10-29 11:27:22 | INFO | sarimax.pipeline:run_full_pipeline:307 | SARIMAX FORECASTING PIPELINE
+2025-10-29 11:27:22 | INFO | sarimax.pipeline:run_full_pipeline:308 | CRISP-DM Methodology
+2025-10-29 11:27:22 | INFO | sarimax.pipeline:run_full_pipeline:309 | ======================================================================
+2025-10-29 11:27:22 | INFO | sarimax.pipeline:run_data_exploration:105 | ======================================================================
+2025-10-29 11:27:22 | INFO | sarimax.pipeline:run_data_exploration:106 | CRISP-DM FASE 2: DATA UNDERSTANDING
+2025-10-29 11:27:22 | INFO | sarimax.pipeline:run_data_exploration:107 | ======================================================================
+2025-10-29 11:27:23 | ERROR | sarimax.pipeline:run_full_pipeline:339 | Pipeline failed: Invalid format specifier '.4f if st['kpss']['pvalue'] else 'N/A'' for object of type 'float'
+2025-10-29 11:27:23 | ERROR | __main__:main:96 | Pipeline execution failed: Invalid format specifier '.4f if st['kpss']['pvalue'] else 'N/A'' for object of type 'float'
+2025-10-29 11:39:20 | INFO | sarimax.pipeline:_setup_logging:98 | Logging configured
+2025-10-29 11:39:20 | INFO | sarimax.pipeline:run_full_pipeline:306 | ======================================================================
+2025-10-29 11:39:20 | INFO | sarimax.pipeline:run_full_pipeline:307 | SARIMAX FORECASTING PIPELINE
+2025-10-29 11:39:20 | INFO | sarimax.pipeline:run_full_pipeline:308 | CRISP-DM Methodology
+2025-10-29 11:39:20 | INFO | sarimax.pipeline:run_full_pipeline:309 | ======================================================================
+2025-10-29 11:39:20 | INFO | sarimax.pipeline:run_data_exploration:105 | ======================================================================
+2025-10-29 11:39:20 | INFO | sarimax.pipeline:run_data_exploration:106 | CRISP-DM FASE 2: DATA UNDERSTANDING
+2025-10-29 11:39:20 | INFO | sarimax.pipeline:run_data_exploration:107 | ======================================================================
+2025-10-29 11:39:21 | INFO | sarimax.pipeline:run_data_preparation:125 | ======================================================================
+2025-10-29 11:39:21 | INFO | sarimax.pipeline:run_data_preparation:126 | CRISP-DM FASE 3: DATA PREPARATION
+2025-10-29 11:39:21 | INFO | sarimax.pipeline:run_data_preparation:127 | ======================================================================
+2025-10-29 11:39:21 | INFO | sarimax.data_preparation:run_preparation_pipeline:310 | Starting SARIMAX data preparation pipeline...
+2025-10-29 11:39:21 | INFO | sarimax.data_preparation:load_and_merge_data:46 | Loading and merging datasets...
+2025-10-29 11:39:21 | INFO | sarimax.data_preparation:load_and_merge_data:71 | Merged dataset: 120 rows, 35 columns
+2025-10-29 11:39:21 | INFO | sarimax.data_preparation:load_and_merge_data:72 | Date range: 2015-01-01 00:00:00 to 2024-12-01 00:00:00
+2025-10-29 11:39:21 | INFO | sarimax.data_preparation:clean_data:90 | Cleaning data...
+2025-10-29 11:39:21 | INFO | sarimax.data_preparation:clean_data:107 | All missing values filled
+2025-10-29 11:39:21 | INFO | sarimax.data_preparation:create_lag_features:165 | Creating lag features (max_lags=3)...
+2025-10-29 11:39:21 | INFO | sarimax.data_preparation:create_lag_features:177 | Created lag features. New shape: (117, 53)
+2025-10-29 11:39:21 | INFO | sarimax.data_preparation:prepare_sarimax_data:197 | Preparing data for SARIMAX...
+2025-10-29 11:39:21 | INFO | sarimax.data_preparation:prepare_sarimax_data:214 | Exogenous variables: 24 features
+2025-10-29 11:39:21 | INFO | sarimax.data_preparation:prepare_sarimax_data:215 | Features: ['atendimento_pre_hospitalar', 'atendimento_pre_hospitalar_lag_1', 'atendimento_pre_hospitalar_lag_2', 'atendimento_pre_hospitalar_lag_3', 'pessoa_localizada', 'pessoa_localizada_lag_1', 'pessoa_localizada_lag_2', 'pessoa_localizada_lag_3', 'lesao_corporal_seguida_de_morte', 'lesao_corporal_seguida_de_morte_lag_1', 'lesao_corporal_seguida_de_morte_lag_2', 'lesao_corporal_seguida_de_morte_lag_3', 'tentativa_de_feminicidio', 'tentativa_de_feminicidio_lag_1', 'tentativa_de_feminicidio_lag_2', 'tentativa_de_feminicidio_lag_3', 'morte_de_agente_do_estado', 'morte_de_agente_do_estado_lag_1', 'morte_de_agente_do_estado_lag_2', 'morte_de_agente_do_estado_lag_3', 'suicidio_de_agente_do_estado', 'suicidio_de_agente_do_estado_lag_1', 'suicidio_de_agente_do_estado_lag_2', 'suicidio_de_agente_do_estado_lag_3']
+2025-10-29 11:39:21 | INFO | sarimax.data_preparation:prepare_sarimax_data:227 | SARIMAX data prepared: 117 observations
+2025-10-29 11:39:21 | INFO | sarimax.data_preparation:prepare_sarimax_data:228 | Target series range: 2503.00 to 19367.00
+2025-10-29 11:39:21 | INFO | sarimax.data_preparation:run_preparation_pipeline:327 | Data preparation pipeline completed successfully
+2025-10-29 11:39:21 | INFO | sarimax.pipeline:train_model:145 | ======================================================================
+2025-10-29 11:39:21 | INFO | sarimax.pipeline:train_model:146 | CRISP-DM FASE 4: MODELING
+2025-10-29 11:39:21 | INFO | sarimax.pipeline:train_model:147 | ======================================================================
+2025-10-29 11:39:21 | INFO | sarimax.data_preparation:prepare_training_data:287 | Preparing training data: 2015-01-01 to 2023-12-01
+2025-10-29 11:39:21 | INFO | sarimax.data_preparation:prepare_training_data:297 | Training data: 105 observations
+2025-10-29 11:39:21 | INFO | sarimax.sarimax_model:fit:66 | Fitting SARIMAX model using auto_arima...
+2025-10-29 11:39:21 | INFO | sarimax.sarimax_model:fit:74 | Starting auto_arima search...
+2025-10-29 11:39:21 | INFO | sarimax.sarimax_model:fit:75 | Configuration: {'max_p': 5, 'max_d': 2, 'max_q': 5, 'max_P': 2, 'max_D': 1, 'max_Q': 2, 'seasonal': True, 'm': 12, 'information_criterion': 'aicc', 'stepwise': True, 'trace': True, 'suppress_warnings': True, 'error_action': 'ignore', 'test': 'adf', 'with_intercept': 'auto', 'method': 'lbfgs', 'max_order': 10, 'n_jobs': 1}
+2025-10-29 11:40:11 | INFO | sarimax.sarimax_model:fit:96 | Model fitted successfully
+2025-10-29 11:40:11 | INFO | sarimax.sarimax_model:fit:97 | Best order (p,d,q): (0, 1, 1)
+2025-10-29 11:40:11 | INFO | sarimax.sarimax_model:fit:98 | Best seasonal order (P,D,Q,s): (1, 0, 1, 12)
+2025-10-29 11:40:11 | INFO | sarimax.sarimax_model:fit:99 | AIC: 1723.46
+2025-10-29 11:40:11 | INFO | sarimax.sarimax_model:fit:100 | AICc: 1723.86
+2025-10-29 11:40:11 | INFO | sarimax.sarimax_model:fit:101 | BIC: 1734.04
+2025-10-29 11:40:11 | INFO | sarimax.pipeline:evaluate_model:174 | ======================================================================
+2025-10-29 11:40:11 | INFO | sarimax.pipeline:evaluate_model:175 | CRISP-DM FASE 5: EVALUATION
+2025-10-29 11:40:11 | INFO | sarimax.pipeline:evaluate_model:176 | ======================================================================
+2025-10-29 11:40:11 | INFO | sarimax.evaluation:evaluate_model:346 | Running comprehensive model evaluation...
+2025-10-29 11:40:11 | INFO | sarimax.evaluation:analyze_residuals:130 | Analyzing residuals...
+2025-10-29 11:40:11 | INFO | sarimax.evaluation:analyze_residuals:141 | Residuals stats: mean=128.6292, std=965.8135
+2025-10-29 11:40:11 | INFO | sarimax.evaluation:analyze_residuals:156 | Ljung-Box test: p-value=0.9546 (White noise)
+2025-10-29 11:40:11 | INFO | sarimax.evaluation:analyze_residuals:184 | Normality test (jarque_bera): p-value=0.0194 (Not normal)
+2025-10-29 11:40:11 | INFO | sarimax.evaluation:analyze_residuals:209 | Heteroskedasticity check: variance ratio=1.7734 (Homoskedastic)
+2025-10-29 11:40:11 | INFO | sarimax.sarimax_model:predict:181 | Generating predictions for 12 periods...
+2025-10-29 11:40:11 | WARNING | sarimax.evaluation:evaluate_model:369 | Test set evaluation failed: 'ARIMA' object has no attribute 'exogenous'
+2025-10-29 11:40:11 | INFO | sarimax.evaluation:evaluate_model:380 | Model evaluation completed
+2025-10-29 11:40:11 | INFO | sarimax.pipeline:generate_forecast:209 | ======================================================================
+2025-10-29 11:40:11 | INFO | sarimax.pipeline:generate_forecast:210 | GENERATING FORECASTS
+2025-10-29 11:40:11 | INFO | sarimax.pipeline:generate_forecast:211 | ======================================================================
+2025-10-29 11:40:11 | INFO | sarimax.sarimax_model:predict:181 | Generating predictions for 12 periods...
+2025-10-29 11:40:11 | ERROR | sarimax.pipeline:run_full_pipeline:339 | Pipeline failed: 'ARIMA' object has no attribute 'exogenous'
+2025-10-29 11:40:11 | ERROR | __main__:main:96 | Pipeline execution failed: 'ARIMA' object has no attribute 'exogenous'
+2025-10-29 11:48:01 | INFO | sarimax.pipeline:_setup_logging:98 | Logging configured
+2025-10-29 11:48:01 | INFO | sarimax.pipeline:run_full_pipeline:306 | ======================================================================
+2025-10-29 11:48:01 | INFO | sarimax.pipeline:run_full_pipeline:307 | SARIMAX FORECASTING PIPELINE
+2025-10-29 11:48:01 | INFO | sarimax.pipeline:run_full_pipeline:308 | CRISP-DM Methodology
+2025-10-29 11:48:01 | INFO | sarimax.pipeline:run_full_pipeline:309 | ======================================================================
+2025-10-29 11:48:01 | INFO | sarimax.pipeline:run_data_exploration:105 | ======================================================================
+2025-10-29 11:48:01 | INFO | sarimax.pipeline:run_data_exploration:106 | CRISP-DM FASE 2: DATA UNDERSTANDING
+2025-10-29 11:48:01 | INFO | sarimax.pipeline:run_data_exploration:107 | ======================================================================
+2025-10-29 11:48:01 | INFO | sarimax.pipeline:run_data_preparation:125 | ======================================================================
+2025-10-29 11:48:01 | INFO | sarimax.pipeline:run_data_preparation:126 | CRISP-DM FASE 3: DATA PREPARATION
+2025-10-29 11:48:01 | INFO | sarimax.pipeline:run_data_preparation:127 | ======================================================================
+2025-10-29 11:48:01 | INFO | sarimax.data_preparation:run_preparation_pipeline:310 | Starting SARIMAX data preparation pipeline...
+2025-10-29 11:48:01 | INFO | sarimax.data_preparation:load_and_merge_data:46 | Loading and merging datasets...
+2025-10-29 11:48:01 | INFO | sarimax.data_preparation:load_and_merge_data:71 | Merged dataset: 120 rows, 35 columns
+2025-10-29 11:48:01 | INFO | sarimax.data_preparation:load_and_merge_data:72 | Date range: 2015-01-01 00:00:00 to 2024-12-01 00:00:00
+2025-10-29 11:48:01 | INFO | sarimax.data_preparation:clean_data:90 | Cleaning data...
+2025-10-29 11:48:01 | INFO | sarimax.data_preparation:clean_data:107 | All missing values filled
+2025-10-29 11:48:01 | INFO | sarimax.data_preparation:create_lag_features:165 | Creating lag features (max_lags=3)...
+2025-10-29 11:48:01 | INFO | sarimax.data_preparation:create_lag_features:177 | Created lag features. New shape: (117, 53)
+2025-10-29 11:48:01 | INFO | sarimax.data_preparation:prepare_sarimax_data:197 | Preparing data for SARIMAX...
+2025-10-29 11:48:01 | INFO | sarimax.data_preparation:prepare_sarimax_data:214 | Exogenous variables: 24 features
+2025-10-29 11:48:01 | INFO | sarimax.data_preparation:prepare_sarimax_data:215 | Features: ['atendimento_pre_hospitalar', 'atendimento_pre_hospitalar_lag_1', 'atendimento_pre_hospitalar_lag_2', 'atendimento_pre_hospitalar_lag_3', 'pessoa_localizada', 'pessoa_localizada_lag_1', 'pessoa_localizada_lag_2', 'pessoa_localizada_lag_3', 'lesao_corporal_seguida_de_morte', 'lesao_corporal_seguida_de_morte_lag_1', 'lesao_corporal_seguida_de_morte_lag_2', 'lesao_corporal_seguida_de_morte_lag_3', 'tentativa_de_feminicidio', 'tentativa_de_feminicidio_lag_1', 'tentativa_de_feminicidio_lag_2', 'tentativa_de_feminicidio_lag_3', 'morte_de_agente_do_estado', 'morte_de_agente_do_estado_lag_1', 'morte_de_agente_do_estado_lag_2', 'morte_de_agente_do_estado_lag_3', 'suicidio_de_agente_do_estado', 'suicidio_de_agente_do_estado_lag_1', 'suicidio_de_agente_do_estado_lag_2', 'suicidio_de_agente_do_estado_lag_3']
+2025-10-29 11:48:01 | INFO | sarimax.data_preparation:prepare_sarimax_data:227 | SARIMAX data prepared: 117 observations
+2025-10-29 11:48:01 | INFO | sarimax.data_preparation:prepare_sarimax_data:228 | Target series range: 2503.00 to 19367.00
+2025-10-29 11:48:01 | INFO | sarimax.data_preparation:run_preparation_pipeline:327 | Data preparation pipeline completed successfully
+2025-10-29 11:48:01 | INFO | sarimax.pipeline:train_model:145 | ======================================================================
+2025-10-29 11:48:01 | INFO | sarimax.pipeline:train_model:146 | CRISP-DM FASE 4: MODELING
+2025-10-29 11:48:01 | INFO | sarimax.pipeline:train_model:147 | ======================================================================
+2025-10-29 11:48:01 | INFO | sarimax.data_preparation:prepare_training_data:287 | Preparing training data: 2015-01-01 to 2023-12-01
+2025-10-29 11:48:01 | INFO | sarimax.data_preparation:prepare_training_data:297 | Training data: 105 observations
+2025-10-29 11:48:01 | INFO | sarimax.sarimax_model:fit:67 | Fitting SARIMAX model using auto_arima...
+2025-10-29 11:48:01 | INFO | sarimax.sarimax_model:fit:75 | Starting auto_arima search...
+2025-10-29 11:48:01 | INFO | sarimax.sarimax_model:fit:76 | Configuration: {'max_p': 5, 'max_d': 2, 'max_q': 5, 'max_P': 2, 'max_D': 1, 'max_Q': 2, 'seasonal': True, 'm': 12, 'information_criterion': 'aicc', 'stepwise': True, 'trace': True, 'suppress_warnings': True, 'error_action': 'ignore', 'test': 'adf', 'with_intercept': 'auto', 'method': 'lbfgs', 'max_order': 10, 'n_jobs': 1}
+2025-10-29 11:48:48 | INFO | sarimax.sarimax_model:fit:100 | Model fitted successfully
+2025-10-29 11:48:48 | INFO | sarimax.sarimax_model:fit:101 | Best order (p,d,q): (0, 1, 1)
+2025-10-29 11:48:48 | INFO | sarimax.sarimax_model:fit:102 | Best seasonal order (P,D,Q,s): (1, 0, 1, 12)
+2025-10-29 11:48:48 | INFO | sarimax.sarimax_model:fit:103 | AIC: 1723.46
+2025-10-29 11:48:48 | INFO | sarimax.sarimax_model:fit:104 | AICc: 1723.86
+2025-10-29 11:48:48 | INFO | sarimax.sarimax_model:fit:105 | BIC: 1734.04
+2025-10-29 11:48:48 | INFO | sarimax.pipeline:evaluate_model:174 | ======================================================================
+2025-10-29 11:48:48 | INFO | sarimax.pipeline:evaluate_model:175 | CRISP-DM FASE 5: EVALUATION
+2025-10-29 11:48:48 | INFO | sarimax.pipeline:evaluate_model:176 | ======================================================================
+2025-10-29 11:48:48 | INFO | sarimax.evaluation:evaluate_model:346 | Running comprehensive model evaluation...
+2025-10-29 11:48:48 | INFO | sarimax.evaluation:analyze_residuals:130 | Analyzing residuals...
+2025-10-29 11:48:48 | INFO | sarimax.evaluation:analyze_residuals:141 | Residuals stats: mean=128.6292, std=965.8135
+2025-10-29 11:48:48 | INFO | sarimax.evaluation:analyze_residuals:156 | Ljung-Box test: p-value=0.9546 (White noise)
+2025-10-29 11:48:48 | INFO | sarimax.evaluation:analyze_residuals:184 | Normality test (jarque_bera): p-value=0.0194 (Not normal)
+2025-10-29 11:48:48 | INFO | sarimax.evaluation:analyze_residuals:209 | Heteroskedasticity check: variance ratio=1.7734 (Homoskedastic)
+2025-10-29 11:48:48 | INFO | sarimax.sarimax_model:predict:185 | Generating predictions for 12 periods...
+2025-10-29 11:48:48 | INFO | sarimax.sarimax_model:predict:219 | Predictions generated
+2025-10-29 11:48:48 | INFO | sarimax.evaluation:calculate_metrics:59 | Calculating evaluation metrics...
+2025-10-29 11:48:48 | INFO | sarimax.evaluation:calculate_metrics:110 | Metrics calculated:
+2025-10-29 11:48:48 | INFO | sarimax.evaluation:calculate_metrics:112 |   MAE: 1497.9087
+2025-10-29 11:48:48 | INFO | sarimax.evaluation:calculate_metrics:112 |   MSE: 2934384.3963
+2025-10-29 11:48:48 | INFO | sarimax.evaluation:calculate_metrics:112 |   RMSE: 1713.0045
+2025-10-29 11:48:48 | INFO | sarimax.evaluation:calculate_metrics:112 |   MAPE: 8.3678
+2025-10-29 11:48:48 | INFO | sarimax.evaluation:calculate_metrics:112 |   SMAPE: 8.8407
+2025-10-29 11:48:48 | INFO | sarimax.evaluation:calculate_metrics:112 |   R2: -0.9699
+2025-10-29 11:48:48 | INFO | sarimax.evaluation:evaluate_model:380 | Model evaluation completed
+2025-10-29 11:48:48 | INFO | sarimax.pipeline:generate_forecast:209 | ======================================================================
+2025-10-29 11:48:48 | INFO | sarimax.pipeline:generate_forecast:210 | GENERATING FORECASTS
+2025-10-29 11:48:48 | INFO | sarimax.pipeline:generate_forecast:211 | ======================================================================
+2025-10-29 11:48:48 | INFO | sarimax.sarimax_model:predict:185 | Generating predictions for 12 periods...
+2025-10-29 11:48:48 | INFO | sarimax.sarimax_model:predict:210 | Predictions with confidence intervals generated
+2025-10-29 11:48:48 | INFO | sarimax.pipeline:generate_forecast:238 | Forecast generated for 12 periods
+2025-10-29 11:48:48 | INFO | sarimax.pipeline:save_artifacts:246 | ======================================================================
+2025-10-29 11:48:48 | INFO | sarimax.pipeline:save_artifacts:247 | SAVING ARTIFACTS
+2025-10-29 11:48:48 | INFO | sarimax.pipeline:save_artifacts:248 | ======================================================================
+2025-10-29 11:48:48 | INFO | sarimax.sarimax_model:save_model:323 | Model saved to outputs/sarimax/models/sarimax_model_20251029_114848.joblib
+2025-10-29 11:48:49 | INFO | sarimax.pipeline:save_artifacts:286 | Artifacts saved:
+2025-10-29 11:48:49 | INFO | sarimax.pipeline:save_artifacts:288 |   model: outputs/sarimax/models/sarimax_model_20251029_114848.joblib
+2025-10-29 11:48:49 | INFO | sarimax.pipeline:save_artifacts:288 |   predictions: outputs/sarimax/predictions/forecast_20251029_114848.csv
+2025-10-29 11:48:49 | INFO | sarimax.pipeline:save_artifacts:288 |   metrics: outputs/sarimax/reports/metrics_20251029_114848.json
+2025-10-29 11:48:49 | INFO | sarimax.pipeline:save_artifacts:288 |   config: outputs/sarimax/reports/config_20251029_114848.yaml
+2025-10-29 11:48:49 | INFO | sarimax.pipeline:run_full_pipeline:332 | ======================================================================
+2025-10-29 11:48:49 | INFO | sarimax.pipeline:run_full_pipeline:333 | PIPELINE COMPLETED SUCCESSFULLY
+2025-10-29 11:48:49 | INFO | sarimax.pipeline:run_full_pipeline:334 | ======================================================================

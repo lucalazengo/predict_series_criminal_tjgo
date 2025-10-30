@@ -1,0 +1,53 @@
+{
+  "model_params": {
+    "order": [
+      0,
+      1,
+      1
+    ],
+    "seasonal_order": [
+      1,
+      0,
+      1,
+      12
+    ],
+    "aic": 1723.46278383168,
+    "aicc": 1723.8627838316802,
+    "bic": 1734.0403474282457
+  },
+  "residual_analysis": {
+    "mean": 128.6292350697365,
+    "std": 965.8134650633964,
+    "min": -1942.2898822817442,
+    "max": 3623.0,
+    "ljung_box": {
+      "statistic": 3.8320959132176124,
+      "pvalue": 0.9546036747042894,
+      "is_white_noise": true
+    },
+    "normality": {
+      "test": "jarque_bera",
+      "statistic": 7.887762222155111,
+      "pvalue": 0.019372880348842502,
+      "is_normal": false
+    },
+    "heteroskedasticity": {
+      "variances": [
+        708473.9595043723,
+        790481.1699033242,
+        1256428.9435282012
+      ],
+      "variance_ratio": 1.77342995698411,
+      "is_homoskedastic": "True"
+    }
+  },
+  "metrics": {
+    "mae": 1497.9087140062813,
+    "mse": 2934384.3963151877,
+    "rmse": 1713.0044939565066,
+    "mape": 8.367834792030694,
+    "smape": 8.840678496557377,
+    "r2": -0.9699135747038747
+  },
+  "cv_results": null
+}
